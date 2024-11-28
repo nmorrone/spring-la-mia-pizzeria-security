@@ -9,7 +9,14 @@
 <header th:insert="~{fragments :: header(pizze)}"></header>
 
 <section class="content pt-5">
-	<div class="container" th:object="${infoPizza}">
+	<!--Container con verifica Pizza presente tramite ID su Url-->
+	<div class="container" th:if="${verifica} == 0">
+		<div class="row justify-content-center">
+			<div class="col-auto"><p>Nessuna Pizza presente con l'ID indicato!</p></div>
+		</div>
+	</div>
+	<!--Container InfoPizza con controllo attributo di verifica-->
+	<div class="container" th:if="${verifica} == 1" th:object="${infoPizza}">
 		<!--Intestazione pagina con pulsante per Coupons-->
 		<div class="row justify-content-center py-3">
 			<div class="col-lg-10 pb-3">
@@ -33,13 +40,15 @@
 								<p>[[*{descrizione}]]</p>
 								<h6><strong>Prezzo:</strong></h6>
 								<p>€ [[*{prezzo}]]</p>
-
+							
+							<!--Controllo Presenza ingredienti-->
 							<div th:if="*{!getIngredienti().isEmpty()}">
 								<span style="color: firebrick; font-size: 12px;">Ingredienti:</span>
 								<ul class="list-group" th:each="ingrediente : *{getIngredienti()}">
 									<li class="list-group-item" th:text="${ingrediente.getNome()}" style="font-size: 12px; border: none;"></li>
 								</ul>
 							</div>
+							<!--Messaggio Avviso nessuna presenza ingredienti-->
 							<div th:if="*{getIngredienti.isEmpty()}">
 								<p>Non ci sono ingredienti salvati per questa pizza!</p>
 							</div>
@@ -51,7 +60,8 @@
 		</div>
 		<!--Tabella lista coupon attivi-->
 		<div class="row justify-content-center py-3">
-
+			
+			<!--Controllo verifica presenza coupon in Lista-->
 			<div th:if="*{!coupons.isEmpty()}" class="col-lg-6">
 				<table class="table table-hover">
 				<thead>
@@ -80,6 +90,7 @@
 				</table>
 							
 			</div> 
+			<!--Messaggio avviso nessun Coupon disponibile-->
 			<div th:if="*{coupons.isEmpty()}" class="col-lg-10 text-center">
 				<p>Non ci sono attualmente offerta per questa Pizza!</p>
 			</div>

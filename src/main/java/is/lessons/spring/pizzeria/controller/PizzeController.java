@@ -73,6 +73,7 @@ public class PizzeController {
 		Optional<Pizza> infoPizza = pizzeRepo.findById(id);
 		if (infoPizza.isPresent()) {
 			model.addAttribute("infoPizza", infoPizza.get());
+			model.addAttribute("verifica", 1);
 		} else {
 
 			// controllare TH:IF Condizione per Display

@@ -25,7 +25,11 @@
 					<p class="pb-3" style="color: firebrick;">Le Nostre Pizze</p>
 				</div>
 				<div class="col-lg-10 table-responsive">
-					<table class="table table-hover">
+					<!--Condizione nessuna pizza presente in DB-->
+					<div th:if="${pizze.isEmpty()}">
+						<h4> Nessuna pizza disponibile </h4>
+					</div>
+					<table class="table table-hover" th:if="${!pizze.isEmpty()}">
 						<thead>
 							<tr>
 								<th>Nome</th>
@@ -36,10 +40,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!--Condizione nessuna pizza presente in DB-->
-							<tr th:if="${pizze.empty}">
-								<td colspan="3" class="prezzo"> Nessuna pizza disponibile </td>
-							</tr>
 							<!--Tabella lista piste presenti-->
 							<tr th:each="pizza : ${pizze}">
 								<td><a th:href="@{'/pizze/' + ${pizza.id}}">[[${pizza.nomePizza}]]</a></td>
