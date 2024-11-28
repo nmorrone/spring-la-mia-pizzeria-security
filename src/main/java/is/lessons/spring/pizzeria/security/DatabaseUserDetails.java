@@ -32,14 +32,14 @@ public class DatabaseUserDetails implements UserDetails {
 			authorities.add(new SimpleGrantedAuthority(role.getName()));
 		}
 	}
-	
-	
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+	
 		return this.authorities;
 	}
+
 
 	@Override
 	public String getPassword() {
@@ -47,34 +47,42 @@ public class DatabaseUserDetails implements UserDetails {
 		return null;
 	}
 
+
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return UserDetails.super.isAccountNonExpired();
+		return false;
 	}
+
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return UserDetails.super.isAccountNonLocked();
+		return false;
 	}
+
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return UserDetails.super.isCredentialsNonExpired();
+		return false;
 	}
+
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return UserDetails.super.isEnabled();
+		return false;
 	}
+	
+	
+
 
 }
