@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +43,7 @@ public class PizzeController {
 
 	//metodo display pizze e menu
 	@GetMapping("/pizze")
-	public String indexPizze(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
+	public String indexPizze(Authentication authentication,@RequestParam(name = "keyword", required = false) String keyword, Model model) {
 
 		List<Pizza> elencoPizze;
 		List<Bevande> elencoBevande;

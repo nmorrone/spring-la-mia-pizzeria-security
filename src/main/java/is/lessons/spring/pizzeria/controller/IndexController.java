@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
 	
-	@GetMapping("/p")
+	@GetMapping("")
 	public String index() {
 		
-		return "redirect:/pizze";
+		return "index";
 	}
 
 }
