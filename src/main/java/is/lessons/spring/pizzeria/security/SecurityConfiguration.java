@@ -18,13 +18,13 @@ public class SecurityConfiguration {
 		
 		http.authorizeHttpRequests()
 
-		.requestMatchers("/pizze/crea-pizza", "/pizze/modifica-pizza/**").hasAuthority("ADMIN")
+		.requestMatchers("/pizze/crea-pizza", "/pizze/modifica-pizza/**", "/pizze/crea-offerta/**", "/pizze/modifica-offerta/**").hasAuthority("ADMIN")
 		.requestMatchers(HttpMethod.POST, "/pizze/**").hasAuthority("ADMIN")
 		.requestMatchers("/ingredienti/**").hasAuthority("ADMIN")
 		.requestMatchers(HttpMethod.POST,"/ingredient/**").hasAuthority("ADMIN")
 		.requestMatchers(HttpMethod.POST, "/coupons/**").hasAuthority("ADMIN")
-		.requestMatchers("/**").permitAll()
 		.requestMatchers("/pizze/**", "/ingredienti/**").hasAnyAuthority("USER", "ADMIN")
+		.requestMatchers("/**").permitAll()
 		.and().formLogin()
 		.and().logout()
 		.and().exceptionHandling();

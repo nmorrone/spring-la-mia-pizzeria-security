@@ -20,7 +20,7 @@
 			</div>
 			<!--Form creazione Offerta-->
 			<div class="col-lg-8">
-				<form id="couponForm" method="post"  th:object="${offerta}" th:action="@{/pizze/{id}/crea-offerta (id=*{pizza.getId()})}">
+				<form id="couponForm" method="post"  th:object="${offerta}" th:action="@{/pizze/crea-offerta/{id} (id=*{pizza.getId()})}">
 					<input type="hidden" id="pizza" th:field="*{pizza}">
 					<div class="form-group row justify-content-between mb-3">
 						<label class="col-lg-auto">Nome Offerta:</label>

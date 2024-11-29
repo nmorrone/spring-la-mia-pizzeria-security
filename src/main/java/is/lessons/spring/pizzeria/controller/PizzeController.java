@@ -136,7 +136,7 @@ public class PizzeController {
 	}
 
 	//metodi display form coupon e store in DB
-	@GetMapping("/pizze/{id}/crea-offerta")
+	@GetMapping("/pizze/crea-offerta/{id}")
 	public String creaCoupon(@PathVariable("id") Integer id, Model model) {
 
 		Pizza pizza = pizzeRepo.findById(id).get();
@@ -148,7 +148,7 @@ public class PizzeController {
 		return "/pizze/crea-offerta";
 	}
 
-	@PostMapping("/pizze/{id}/crea-offerta")
+	@PostMapping("/pizze/crea-offerta/{id}")
 	public String storeCoupon(@PathVariable("id") Integer id, @Valid @ModelAttribute("coupon") Coupon couponForm,
 			BindingResult bindingResults, Model model) {
 		if (bindingResults.hasErrors()) {
