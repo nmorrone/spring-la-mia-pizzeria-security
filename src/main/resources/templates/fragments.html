@@ -47,9 +47,14 @@
 										th:classappend="${pagename == 'pizze'} ? 'nav-link-active' : 'nav-link'">Le
 										Nostre Pizze</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
 								<a class="nav-link" aria-current="page" th:href="@{'/pizze/crea-pizza'}"
 								th:classappend="${pagename == 'crea'} ? 'nav-link-active':'nav-link'">Crea Pizza</a>
+								</li>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" aria-current="page" th:href="@{'/login'}"
+								th:classappend="${pagename == 'login'} ? 'nav-link-active':'nav-link'">Accedi</a>
 								</li>
 							</ul>
 						</div>

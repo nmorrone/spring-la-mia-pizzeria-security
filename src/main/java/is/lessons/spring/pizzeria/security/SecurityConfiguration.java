@@ -23,8 +23,8 @@ public class SecurityConfiguration {
 		.requestMatchers("/ingredienti/**").hasAuthority("ADMIN")
 		.requestMatchers(HttpMethod.POST,"/ingredient/**").hasAuthority("ADMIN")
 		.requestMatchers(HttpMethod.POST, "/coupons/**").hasAuthority("ADMIN")
+		.requestMatchers("/**", "/pizze").permitAll()
 		.requestMatchers("/pizze/**", "/ingredienti/**").hasAnyAuthority("USER", "ADMIN")
-		.requestMatchers("/**").permitAll()
 		.and().formLogin()
 		.and().logout()
 		.and().exceptionHandling();

@@ -35,8 +35,8 @@
 								<th>Nome</th>
 								<th>Descrizione</th>
 								<th class="prezzo">Prezzo</th>
-								<th></th>
-								<th></th>
+								<th sec:authorize="hasAuthority('ADMIN')"></th>
+								<th sec:authorize="hasAuthority('ADMIN')"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,8 +45,8 @@
 								<td><a th:href="@{'/pizze/' + ${pizza.id}}">[[${pizza.nomePizza}]]</a></td>
 								<td th:text="${pizza.descrizione}"></td>
 								<td class="prezzo" th:text="${pizza.prezzo}"></td>
-								<td><a th:href="@{'/pizze/modifica-pizza/' + ${pizza.id}}" class="btn myButton" role="button"><i class="fas fa-pen fa-xs"></i></a</td>
-								<td><form th:action="@{'/pizze/rimuovi/' + ${pizza.id}}" method="post">
+								<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/pizze/modifica-pizza/' + ${pizza.id}}" class="btn myButton" role="button"><i class="fas fa-pen fa-xs"></i></a</td>
+								<td sec:authorize="hasAuthority('ADMIN')"><form th:action="@{'/pizze/rimuovi/' + ${pizza.id}}" method="post">
 								<button class="btn myButton" type="submit" onclick="return confirm('Sei sicuro di voler eliminare la Pizza?')">
 									<i class="fas fa-trash fa-xs"></i>
 								</button>

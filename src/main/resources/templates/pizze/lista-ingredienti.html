@@ -12,7 +12,7 @@
 
 	<section class="content pt-5">
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center" sec:authorize="hasAnyRole('ADMIN', 'USER')">
 				<div class="col-lg-10">
 					<p style="color: firebrick;">Ecco gli Ingredienti della Nostra Pizzeria</p>
 				</div>
@@ -21,13 +21,13 @@
 						<thead>
 							<tr>
 								<th>Nome Ingrediente</th>
-								<th></th>
+								<th sec:authorize="hasAuthority('ADMIN')"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="ingrediente : ${ingredienti}">
 								<td th:text="${ingrediente.nome}"></td>
-								<td>
+								<td sec:authorize="hasAuthority('ADMIN')">
 									<form th:action="@{'/ingredienti/rimuovi-ingrediente/' + ${ingrediente.id}}"
 										method="post">
 										<button class="btn myButton" type="submit"
@@ -41,7 +41,7 @@
 					</table>
 				</div>
 				<!--Colonna inserimento ingrediente STICKY-->
-				<div class="col-lg-3 py-3">
+				<div class="col-lg-3 py-3" sec:authorize="hasAuthority('ADMIN')">
 					<div class="sticky-top">
 						<p>Vuoi inserire un nuovo Ingrediente?</p>
 						<hr style="color: firebrick;">
